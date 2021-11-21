@@ -1,0 +1,96 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                       %
+%  TABLICZKA NA DRZWI                   %
+%  wg księgi indentyfikacji wizualnej   %
+%  Politechniki Śląskiej                %
+%                                       %
+%  (c) Krzysztof Simiński, 2020-2021    %
+%                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Konieczne jest zainstalowanie fontu: Barlow Semi Condensed   
+
+
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex--text}   % to support TeX conventions like dashes etc
+\usepackage{xltxtra} % extra customisation for XeLaTeX
+\setsansfont{Barlow Semi Condensed}
+
+
+ 
+\usepackage[polish]{babel} 
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+
+% ustawienie kolorów
+\definecolor{polsl-niebieski}{RGB}{46, 79, 158}
+%\definecolor{polsl-niebieski}{rgb}{0.00000, 0.29411 , 0.56862}
+%\definecolor{polsl-niebieski}{rgb}{0.18039, 0.30980 , 0.61961}
+\definecolor{polsl-zolty}    {rgb}{1.00000, 0.84314 , 0.00000}
+
+
+\newcommand{\HUGE}{\fontsize{35}{30}\selectfont}
+\newcommand{\veryHuge}{\fontsize{65}{55}\selectfont}
+
+\frenchspacing
+
+% parametry bloku opisisującego osobę:
+% pierwszy opcjonalny: długość kreski pod imienim i nazwiskiem (domyślnie 8.5cm)
+% współrzędna pionowa bloku (im wyższa wartość, tym wyższe położenie)
+% stopień / tytuł
+% imię nazwisko
+% stanowisko
+\newcommand{\osoba}[6][8.5cm]{%
+\draw (85mm, #2 + 10mm) node [anchor=south west] {\sffamily\Large\vphantom{Iy} #3};
+\draw (85mm, #2) node[anchor=south west] {\sffamily\bfseries\Huge\vphantom{Iy} #4 \MakeUppercase{#5}};
+\draw[fill] (85mm, #2 - 0mm) rectangle +(#1, 0.5mm);
+\draw (85mm, #2 - 7mm) node [anchor=south west] {\sffamily\vphantom{Iy} #6};
+} 
+ 
+\begin{document} 
+\begin{tikzpicture}
+% tło
+\draw[] (0,0) rectangle (297mm, 210mm);
+\draw[polsl-niebieski,fill=polsl-niebieski] (0,0) rectangle (64mm, 210mm);
+\draw[polsl-zolty,fill=polsl-zolty] (0mm, 177mm) rectangle +(80mm, 2mm);
+
+% logo 
+% tylko PolSl
+%\node[inner sep=0pt] (logo) at (32.0mm, 4cm) {\includegraphics[width=45mm]{graf/politechnika_sl_logo_pion_inwersja_pl.eps}};
+
+% PolSl + uczelnia badawcza
+\node[inner sep=0pt] (logo) at (20.3mm, 4cm) {\includegraphics[width=34mm]{graf/politechnika_sl_logo_pion_inwersja_pl.eps}};
+\node[inner sep=0pt] (logo) at (43.6mm, 3.8cm) {\includegraphics[width=22mm]{graf/uczelnia-badawcza-kolor-pion.png}};
+
+
+% numer pokoju
+\draw (85mm, 177mm) node[anchor=south west] {\sffamily\bfseries\veryHuge 123a};
+
+
+% osoby
+
+% osoby
+\osoba[110mm]%   opcjonalna długość kreski pod nazwiskiem, wartość domyślna 8.5 cm
+{155mm}%         położenie w pionie
+{dr hab. inż.}%  tytulatura
+{Imię}%          imię :-)
+{Nazwisko}%      nazwisko
+{profesor Politechniki Śląskiej / professor of The Silesian University of Technology} % stanowisko
+;
+
+\osoba[60mm]{120mm}{dr inż.}{Imię}{Nazwisko}{adiunkt / assisting professor};
+\osoba[60mm]{80mm}{mgr inż.}{Imię}{Nazwisko}{asystent / assistent};
+
+
+% wydział
+\draw[polsl-niebieski] (85mm, 4cm) node [anchor=south west,text width=13cm,align=left] {\sffamily\Large Wydział po polsku\\Faculty in English};
+
+% katedra
+\draw[polsl-niebieski] (85mm, 2cm) node [anchor=south west,text width=13cm,align=left] {\sffamily\Large Katedra po polsku\\Chair in English};
+
+\end{tikzpicture} 
+\end{document}
