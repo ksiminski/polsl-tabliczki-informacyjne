@@ -1,8 +1,7 @@
-![Politechnika Śląska](politechnika_sl_logo_poziom_pl_rgb.png)
 
-# Tabliczki informacyjne
+[comment:]  # (![Politechnika Śląska](politechnika_sl_logo_poziom_pl_rgb.png))
 
-wg księgi identyfikacji wizualnej Politechniki Śląskiej
+# Tabliczki informacyjne wg księgi identyfikacji wizualnej Politechniki Śląskiej
 
 ![tabliczka A5 bez QR](graf/a5.png)
 
